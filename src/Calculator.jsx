@@ -7,8 +7,8 @@ const Calculator = () => {
     const [weight, setWeight] = useState('There is currently no weight loaded ');
 
     const plateMath = inputWeight =>{
-        let currentWeight = inputWeight.weight;
-        let plate45 = 0; let plate35 = 0; let plate25 = 0; let plate10 = 0; let plate5 = 0; let plateHalf = 0;
+        let plate45 = 0, plate35 = 0, plate25 = 0, plateTen = 0, plate5 = 0, plateHalf = 0, currentWeight = inputWeight.weight;
+        const error = "please input a number greater than 0 and divisible by 5 for your lifts";
       
         const recWeight = n => {
           if( n === 0 ){
@@ -27,7 +27,7 @@ const Calculator = () => {
             return recWeight(n - 25);
           }
           else if(n >= 10){
-            plate10++;
+            plateTen++;
             return recWeight(n - 10);
           }
           else if(n >= 5){
@@ -40,14 +40,15 @@ const Calculator = () => {
           }
         }
       
-        const error = "please input a number greater than 0 and divisible by 5 for your lifts";
-
         if(currentWeight%5 === 0 && currentWeight>0){
           let n = (currentWeight-45)/2; 
           recWeight(n);
+          console.log(plate45,plate35, plate25, plateTen, plate5, plateHalf);
+
           const finalize = () => {
                 let weightArr = [];
-                if(plate45 !== 0){
+        
+                if(plate45 > 0){
                     if(plate45 === 1){
                         weightArr.push(plate45 + " 45 lb plate");
                     }
@@ -55,7 +56,7 @@ const Calculator = () => {
                         weightArr.push(plate45 + " 45 lb plates")
                     }
                 }
-                if(plate35 !== 0){
+                if(plate35 > 0){
                     if(plate35 === 1){
                         weightArr.push(plate35 + " 35 lb plate");
                     }
@@ -63,7 +64,7 @@ const Calculator = () => {
                         weightArr.push(plate35 + " 35 lb plates")
                     }
                 }
-                if(plate25 !== 0){
+                if(plate25 > 0){
                     if(plate25 === 1){
                         weightArr.push(plate25 + " 25 lb plate");
                     }
@@ -71,23 +72,27 @@ const Calculator = () => {
                         weightArr.push(plate25 + " 25 lb plates")
                     }
                 }
-                if(plate10 !== 0){
-                    if(plate10 === 1){
-                        weightArr.push(plate10 + " 10 lb plate");
+                if(plateTen > 0){
+                    if(plateTen === 1){
+                        weightArr.push(plateTen + " 10 lb plate");
                     }
                     else{
-                        weightArr.push(plate10 + " 10 lb plates")
+                        weightArr.push(plateTen + " 10 lb plates")
                     }
                 }
-                if(plateHalf !== 0){
+                if(plateHalf > 0){
                     if(plateHalf === 1){
-                        weightArr.push(" a cookie");
+                        weightArr.push("a cookie");
                     }
                     else{
                         weightArr.push(plateHalf + " cookies")
                     }
                 }
-                setWeight(weightArr.join('').toString());
+                if(weightArr.length > 1){
+                    setWeight(weightArr.join(' ').toString());
+                }
+                console.log(weightArr);
+                setWeight(weightArr.toString());
                 
             }
             finalize();
