@@ -4,14 +4,14 @@ import "./index.css";
 
 const Calculator = () => {
     const { register, handleSubmit } = useForm();
-    const [weight, setWeight] = useState('There is currently no weight loaded ');
+    const [weight, setWeight] = useState(`There is currently no weight loaded`);
 
-    const plateMath = inputWeight =>{
+    const plateMath = inputWeight => {
         let plate45 = 0, plate35 = 0, plate25 = 0, plateTen = 0, plate5 = 0, plateHalf = 0, currentWeight = inputWeight.weight;
-        const error = "please input a number greater than 0 and divisible by 5 for your lifts";
+        const error = `input an integer greater than 0 and divisible by 5`;
       
         const recWeight = n => {
-          if( n === 0 ){
+          if(n === 0){
             return;
           }
           else if(n >= 45){
@@ -40,65 +40,65 @@ const Calculator = () => {
           }
         }
       
-        if(currentWeight%5 === 0 && currentWeight>0){
-          let n = (currentWeight-45)/2; 
+        if(currentWeight % 5 === 0 && currentWeight > 0){
+          let n = (currentWeight-45)/2;
           recWeight(n);
-          console.log(plate45,plate35, plate25, plateTen, plate5, plateHalf);
 
           const finalize = () => {
-                let weightArr = [];
+                const weightArr = [];
+                const pp = "lb plate";
         
                 if(plate45 > 0){
                     if(plate45 === 1){
-                        weightArr.push(plate45 + " 45 lb plate");
-                    }
-                    else{
-                        weightArr.push(plate45 + " 45 lb plates")
+                        weightArr.push(` ${plate45} 45 ${pp}`);
+                    }else{
+                        weightArr.push(` ${plate45} 45 ${pp}s`)
                     }
                 }
                 if(plate35 > 0){
                     if(plate35 === 1){
-                        weightArr.push(plate35 + " 35 lb plate");
-                    }
-                    else{
-                        weightArr.push(plate35 + " 35 lb plates")
+                        weightArr.push(` ${plate35} 35 ${pp}`);
+                    }else{
+                        weightArr.push(` ${plate35} 35 ${pp}s`)
                     }
                 }
                 if(plate25 > 0){
                     if(plate25 === 1){
-                        weightArr.push(plate25 + " 25 lb plate");
-                    }
-                    else{
-                        weightArr.push(plate25 + " 25 lb plates")
+                        weightArr.push(` ${plate25} 25 ${pp}`);
+                    }else{
+                        weightArr.push(` ${plate25} 25 ${pp}s`)
                     }
                 }
                 if(plateTen > 0){
                     if(plateTen === 1){
-                        weightArr.push(plateTen + " 10 lb plate");
+                        weightArr.push(` ${plateTen} 10 ${pp}`);
+                    }else{
+                        weightArr.push(` ${plateTen} 10 ${pp}s`)
                     }
-                    else{
-                        weightArr.push(plateTen + " 10 lb plates")
+                }
+                if(plate5 > 0){
+                    if(plate5 === 1){
+                        weightArr.push(` ${plate5} 5 ${pp}`);
+                    }else{
+                        weightArr.push(` ${plate5} 5 ${pp}s`)
                     }
                 }
                 if(plateHalf > 0){
                     if(plateHalf === 1){
-                        weightArr.push("a cookie");
-                    }
-                    else{
-                        weightArr.push(plateHalf + " cookies")
+                        weightArr.push(` a cookie`);
+                    }else{
+                        weightArr.push(`${plateHalf} cookies`)
                     }
                 }
                 if(weightArr.length > 1){
-                    setWeight(weightArr.join(' ').toString());
+                    setWeight(weightArr.join(',').toString().trim());
+                }else{
+                    setWeight(weightArr.toString().trim());  
                 }
-                console.log(weightArr);
-                setWeight(weightArr.toString());
-                
+                  
             }
             finalize();
-            
-        }
-        else{
+        }else{
             setWeight(error);
         }
     }
@@ -107,7 +107,7 @@ const Calculator = () => {
         <div>     
             <form onSubmit={handleSubmit(plateMath)}>
                 <div>{weight}</div>
-                <div><input type="text" {...register('weight')} placeholder="Please enter a positive number divisible by 5"/></div>
+                <div><input className="textbox" type="text" {...register('weight')} placeholder="Enter Your Weight"/></div>
                 <div><input className="button" type="submit" value="Find Plates" /></div>
             </form>
         </div>
