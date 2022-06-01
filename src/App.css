@@ -8,6 +8,7 @@
   text-shadow: 2px 2px 4px rgb(187, 233, 186);
   width: 100vw;
   height: 100vh;
+  display:inline-block;
 }
 .button {
   font-family: Courier New;
@@ -29,4 +30,17 @@
   background-color: #66ff66;
   border-radius: 6px;
   color: black;
+}
+.textbox {
+  font-family: Courier New;
+  background-color: rgb(10, 9, 9);
+  color: #66ff66;
+  text-align: center;
+  border: 2px;
+  border-color: #66ff66;
+  box-shadow: 2px 2px 4px rgb(187, 233, 186);
+  font-size: 35px;
+}
+.form {
+  padding-top: 50px;
 }

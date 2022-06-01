@@ -91,6 +91,7 @@ const Calculator = () => {
                     }
                 }
                 if(weightArr.length > 1){
+                    weightArr[weightArr.length -1] = ` and ${weightArr[weightArr.length -1]}`;
                     setWeight(weightArr.join(',').toString().trim());
                 }else{
                     setWeight(weightArr.toString().trim());  
