@@ -11,40 +11,40 @@ const Calculator = () => {
         const error = `input an integer greater than 0 and divisible by 5`;
       
         const recWeight = n => {
-          if(n === 0){
-            return;
-          }
-          else if(n >= 45){
-            plate45++;
-            return recWeight(n - 45);
-          }
-          else if(n >= 35){
-            plate35++;
-            return recWeight(n - 35);
-          }
-          else if(n >= 25){
-            plate25++;
-            return recWeight(n - 25);
-          }
-          else if(n >= 10){
-            plateTen++;
-            return recWeight(n - 10);
-          }
-          else if(n >= 5){
-            plate5++;
-            return recWeight(n - 5);
-          }
-          else{
-            plateHalf++;
-            return recWeight(n - 2.5);
-          }
+            if(n === 0){
+                return;
+            }
+            else if(n >= 45){
+                plate45++;
+                return recWeight(n - 45);
+            }
+            else if(n >= 35){
+                plate35++;
+                return recWeight(n - 35);
+            }
+            else if(n >= 25){
+                plate25++;
+                return recWeight(n - 25);
+            }
+            else if(n >= 10){
+                plateTen++;
+                return recWeight(n - 10);
+            }
+            else if(n >= 5){
+                plate5++;
+                return recWeight(n - 5);
+            }
+            else{
+                plateHalf++;
+                return recWeight(n - 2.5);
+            }
         }
       
         if(currentWeight % 5 === 0 && currentWeight > 0){
-          let n = (currentWeight-45)/2;
-          recWeight(n);
-
-          const finalize = () => {
+            let n = (currentWeight-45)/2;
+            recWeight(n);
+            
+            const finalize = () => {
                 const weightArr = [];
                 const pp = "lb plate";
         
@@ -108,7 +108,7 @@ const Calculator = () => {
         <div>
             <div>{weight}</div>
             <form className="form" onSubmit={handleSubmit(plateMath)}>
-                <div className="textdiv" ><input className="textbox" type="text" {...register('weight')} placeholder="Enter Your Weight"/></div>
+                <div><input className="textbox" type="text" {...register('weight')} placeholder="Enter Your Weight"/></div>
                 <div><input className="button" type="submit" value="Find Plates" /></div>
             </form>
         </div>
