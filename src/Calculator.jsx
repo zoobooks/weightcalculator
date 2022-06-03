@@ -105,10 +105,10 @@ const Calculator = () => {
     }
 
     return (
-        <div>
-            <div>{weight}</div>
+        <div className="calcview">
+            <div className="weightdisplay" >{weight}</div>
             <form className="form" onSubmit={handleSubmit(plateMath)}>
-                <div><input className="textbox" type="text" {...register('weight')} placeholder="Enter Your Weight"/></div>
+                <div><input className="textbox" type="text" {...register('weight')}/></div>
                 <div><input className="button" type="submit" value="Find Plates" /></div>
             </form>
         </div>
